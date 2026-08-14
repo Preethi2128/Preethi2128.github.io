@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)file:///C:/Users/AL%20FARES/OneDrive/Desktop/webtech/HTML/MyPortfolio.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preethi R — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Preethi&#39;s Portfolio_files/css2" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1B1B3A;
+    --bg-soft: #241f47;
+    --violet: #6C3FC5;
+    --coral: #FF6F59;
+    --amber: #FFB84C;
+    --cream: #FBF7F0;
+    --cream-dim: #cfc9e8;
+    --line: rgba(251,247,240,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{ font-family:'Space Grotesk', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 32px; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background: rgba(27,27,58,0.75);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{ display:flex; justify-content:space-between; align-items:center; height:64px; }
+  nav .logo{ font-weight:700; font-size:1.1rem; letter-spacing:0.02em; }
+  nav .logo span{ background:linear-gradient(90deg,var(--coral),var(--amber)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  nav ul{ list-style:none; display:flex; gap:28px; }
+  nav a{ text-decoration:none; font-size:0.92rem; color:var(--cream-dim); transition:color .2s; }
+  nav a:hover{ color:var(--amber); }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--cream); font-size:1.5rem; cursor:pointer; }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; align-items:center;
+    padding-top:64px;
+    overflow:hidden;
+  }
+  .brace-bg{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    font-family:'Space Grotesk', sans-serif;
+    font-size:min(60vw, 620px);
+    font-weight:700;
+    line-height:1;
+    background: linear-gradient(160deg, var(--violet) 0%, var(--coral) 55%, var(--amber) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    opacity:0.16;
+    user-select:none;
+    pointer-events:none;
+    z-index:0;
+  }
+  .hero-content{ position:relative; z-index:1; }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.85rem;
+    color:var(--amber);
+    letter-spacing:0.08em;
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:''; width:28px; height:1px; background:var(--amber);
+  }
+  h1.name{
+    font-size:clamp(2.6rem, 7vw, 4.6rem);
+    font-weight:700;
+    line-height:1.05;
+    margin-bottom:20px;
+  }
+  h1.name .grad{
+    background:linear-gradient(90deg,var(--coral),var(--amber));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{
+    max-width:560px;
+    font-size:1.08rem;
+    color:var(--cream-dim);
+    margin-bottom:34px;
+  }
+  .hero-links{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px;
+    border-radius:100px;
+    font-weight:600; font-size:0.95rem;
+    text-decoration:none;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--coral),var(--amber));
+    color:#1B1B3A;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,111,89,0.35); }
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--cream);
+  }
+  .btn-ghost:hover{ border-color:var(--amber); color:var(--amber); }
+
+  /* wave divider */
+  .wave{ display:block; width:100%; height:80px; margin-top:-2px; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:90px 0; position:relative; }
+  .section-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.8rem;
+    color:var(--coral);
+    letter-spacing:0.1em;
+    margin-bottom:10px;
+  }
+  h2.section-title{
+    font-size:clamp(1.7rem,3.2vw,2.3rem);
+    margin-bottom:44px;
+    max-width:620px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:56px; align-items:start;
+  }
+  .about-text p{ color:var(--cream-dim); margin-bottom:16px; font-size:1.02rem; }
+  .stat-card{
+    background: linear-gradient(160deg, rgba(108,63,197,0.28), rgba(255,111,89,0.14));
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:26px;
+    margin-bottom:16px;
+  }
+  .stat-card .num{ font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:700; color:var(--amber); }
+  .stat-card .lbl{ color:var(--cream-dim); font-size:0.92rem; margin-top:4px; }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; }
+  .skill-card{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:26px;
+    position:relative;
+    overflow:hidden;
+  }
+  .skill-card::before{
+    content:''; position:absolute; top:0; left:0; width:100%; height:3px;
+    background:linear-gradient(90deg,var(--violet),var(--coral),var(--amber));
+  }
+  .skill-card h3{ font-size:1rem; margin-bottom:14px; color:var(--amber); }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    padding:6px 12px;
+    border-radius:8px;
+    background: rgba(255,255,255,0.06);
+    border:1px solid var(--line);
+    color:var(--cream-dim);
+  }
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{ position:relative; padding-left:32px; }
+  .timeline::before{
+    content:''; position:absolute; left:6px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(180deg,var(--coral),var(--amber),var(--violet));
+  }
+  .t-item{ position:relative; padding-bottom:44px; }
+  .t-item:last-child{ padding-bottom:0; }
+  .t-dot{
+    position:absolute; left:-32px; top:4px;
+    width:14px; height:14px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 0 4px rgba(255,184,76,0.18);
+  }
+  .t-role{ font-size:1.1rem; font-weight:600; }
+  .t-org{ color:var(--coral); font-size:0.95rem; margin-bottom:6px; }
+  .t-date{ font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--cream-dim); margin-bottom:10px; display:block; }
+  .t-desc{ color:var(--cream-dim); font-size:0.96rem; max-width:600px; }
+
+  /* ---------- PROJECTS ---------- */
+  .project-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; }
+  .project-card{
+    background: linear-gradient(155deg, var(--bg-soft) 0%, rgba(108,63,197,0.22) 100%);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:30px;
+    transition: transform .25s ease, border-color .25s ease;
+  }
+  .project-card:hover{ transform:translateY(-6px); border-color:var(--coral); }
+  .project-icon{
+    width:44px; height:44px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,var(--violet),var(--coral));
+    font-size:1.2rem; margin-bottom:18px;
+  }
+  .project-card h3{ font-size:1.15rem; margin-bottom:10px; }
+  .project-card p{ color:var(--cream-dim); font-size:0.95rem; margin-bottom:18px; }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-card{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .edu-card:last-child{ border-bottom:none; }
+  .edu-name{ font-weight:600; }
+  .edu-org{ color:var(--cream-dim); font-size:0.92rem; }
+  .edu-meta{ font-family:'JetBrains Mono',monospace; font-size:0.85rem; color:var(--amber); text-align:right; }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    background: linear-gradient(160deg, var(--violet), #3a1f8c 60%, var(--bg));
+    padding:90px 0 40px;
+    text-align:center;
+  }
+  footer h2{ font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:14px; }
+  footer p{ color:var(--cream-dim); margin-bottom:34px; }
+  .footer-links{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:56px; }
+  .foot-bottom{ font-size:0.82rem; color:var(--cream-dim); font-family:'JetBrains Mono',monospace; }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:760px){
+    nav ul{ display:none; }
+    .about-grid{ grid-template-columns:1fr; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Preethi<span>.dev</span></div>
+    <ul>
+      <li><a href="file:///C:/Users/AL%20FARES/OneDrive/Desktop/webtech/HTML/MyPortfolio.html#about">About</a></li>
+      <li><a href="file:///C:/Users/AL%20FARES/OneDrive/Desktop/webtech/HTML/MyPortfolio.html#skills">Skills</a></li>
+      <li><a href="file:///C:/Users/AL%20FARES/OneDrive/Desktop/webtech/HTML/MyPortfolio.html#experience">Experience</a></li>
+      <li><a href="file:///C:/Users/AL%20FARES/OneDrive/Desktop/webtech/HTML/MyPortfolio.html#projects">Projects</a></li>
+      <li><a href="file:///C:/Users/AL%20FARES/OneDrive/Desktop/webtech/HTML/MyPortfolio.html#education">Education</a></li>
+      <li><a href="file:///C:/Users/AL%20FARES/OneDrive/Desktop/webtech/HTML/MyPortfolio.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="brace-bg">{ }</div>
+  <div class="wrap hero-content">
+    <div class="eyebrow mono">SOFTWARE DEVELOPER · FRESHER · CHENNAI</div>
+    <h1 class="name">Hi, I'm Preethi R —<br>I build with <span class="grad">Java &amp; Spring Boot.</span></h1>
+    <p class="hero-sub">B.Tech graduate in AI &amp; Data Science, now focused on backend development — Core Java, Spring Boot, Hibernate and SQL — with hands-on project and internship experience.</p>
+    <div class="hero-links">
+      <a href="file:///C:/Users/AL%20FARES/OneDrive/Desktop/webtech/HTML/MyPortfolio.html#projects" class="btn btn-primary">View my work →</a>
+      <a href="file:///C:/Users/AL%20FARES/OneDrive/Desktop/webtech/HTML/MyPortfolio.html#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,40 L1440,80 L0,80 Z" fill="#1B1B3A"></path>
+  </svg>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-tag mono">01 · ABOUT</div>
+    <h2 class="section-title">A fresher who ships real, working code — not just coursework.</h2>
+    <div class="about-grid">
+      <div class="about-text reveal in">
+        <p>I graduated in 2025 with a B.Tech in Artificial Intelligence &amp; Data Science, and since then I've focused on becoming genuinely job-ready as a backend Java developer — through structured full-stack training, two hands-on internships, and building complete projects end to end rather than just following tutorials.</p>
+        <p>I care about writing code I can actually explain — every project on this page is something I built, ran, and can walk through line by line, not just list as a keyword.</p>
+      </div>
+      <div class="reveal in">
+        <div class="stat-card">
+          <div class="num">8.6</div>
+          <div class="lbl">CGPA — B.Tech AI &amp; Data Science</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">3</div>
+          <div class="lbl">Internships &amp; hands-on training programs</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">2</div>
+          <div class="lbl">End-to-end projects, built solo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="section-tag mono">02 · SKILLS</div>
+    <h2 class="section-title">What I actually work with.</h2>
+    <div class="skill-groups">
+      <div class="skill-card reveal in">
+        <h3>Core &amp; Backend</h3>
+        <div class="tag-row">
+          <span class="tag">Java</span><span class="tag">OOP</span><span class="tag">Collections</span>
+          <span class="tag">Exception Handling</span><span class="tag">Spring Boot</span>
+          <span class="tag">Hibernate</span><span class="tag">Servlet</span><span class="tag">JDBC</span>
+        </div>
+      </div>
+      <div class="skill-card reveal in">
+        <h3>Databases</h3>
+        <div class="tag-row">
+          <span class="tag">SQL</span><span class="tag">DDL</span><span class="tag">DML</span>
+          <span class="tag">Joins</span><span class="tag">Sub-queries</span><span class="tag">CRUD</span>
+        </div>
+      </div>
+      <div class="skill-card reveal in">
+        <h3>Web Development</h3>
+        <div class="tag-row">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card reveal in">
+        <h3>Tools &amp; Platforms</h3>
+        <div class="tag-row">
+          <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">CodeChef</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-tag mono">03 · EXPERIENCE</div>
+    <h2 class="section-title">Where I've worked.</h2>
+    <div class="timeline">
+      <div class="t-item reveal in">
+        <div class="t-dot"></div>
+        <div class="t-role">Junior Developer Intern</div>
+        <div class="t-org">Edgar eFile Solutions, DLF Chennai</div>
+        <span class="t-date">Jul 2026 – Aug 2026</span>
+        <p class="t-desc">Contributed to Java-based application development tasks under senior developer guidance, gaining hands-on exposure to a professional software development workflow.</p>
+      </div>
+      <div class="t-item reveal in">
+        <div class="t-dot"></div>
+        <div class="t-role">Java Full Stack Development Trainee</div>
+        <div class="t-org">Qspider Institute</div>
+        <span class="t-date">Aug 2025 – May 2026</span>
+        <p class="t-desc">Developed application-level proficiency in core Java — OOP, Collections, and Exception Handling — along with Spring Boot, Hibernate, Servlet, and JDBC. Wrote SQL queries involving Joins, Sub-queries, and Grouping for backend data operations, and built front-end components using HTML, CSS, and JavaScript.</p>
+      </div>
+      <div class="t-item reveal in">
+        <div class="t-dot"></div>
+        <div class="t-role">Full Stack Web Development Intern</div>
+        <div class="t-org">Unified Mentor</div>
+        <span class="t-date">Apr 2025</span>
+        <p class="t-desc">Wrote SQL queries to manage and retrieve data for application features, as part of full-stack development tasks alongside HTML, CSS, JavaScript, and Java.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="section-tag mono">04 · PROJECTS</div>
+    <h2 class="section-title">Things I've built end to end.</h2>
+    <div class="project-grid">
+      <div class="project-card reveal in">
+        <div class="project-icon">🏦</div>
+        <h3>Bank Account Management System</h3>
+        <p>A REST API built with Spring Boot, Hibernate (JPA), and SQL — supporting account creation, deposits, withdrawals, and transaction history, with balance validation and transactional consistency on every operation.</p>
+        <div class="tag-row">
+          <span class="tag">Spring Boot</span><span class="tag">Hibernate</span><span class="tag">SQL</span><span class="tag">REST API</span>
+        </div>
+      </div>
+      <div class="project-card reveal in">
+        <div class="project-icon">🚨</div>
+        <h3>Smart Accident Detection &amp; Recovery Notification System</h3>
+        <p>A real-time detection pipeline integrating OpenCV, a TensorFlow-trained model, and GPS-based location tracking — demonstrating end-to-end system design across computer vision, ML, and embedded I/O.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">TensorFlow</span><span class="tag">GPS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-tag mono">05 · EDUCATION</div>
+    <h2 class="section-title">Academic background.</h2>
+    <div class="reveal in">
+      <div class="edu-card">
+        <div>
+          <div class="edu-name">B.Tech, Artificial Intelligence &amp; Data Science</div>
+          <div class="edu-org">Adhi College of Engineering &amp; Technology, Kanchipuram</div>
+        </div>
+        <div class="edu-meta">2025 · CGPA 8.6</div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <div class="edu-name">HSC</div>
+          <div class="edu-org">Govt. Hr. Sec. School, Timiri, TN</div>
+        </div>
+        <div class="edu-meta">2021 · 86%</div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <div class="edu-name">SSLC</div>
+          <div class="edu-org">Govt. Hr. Sec. School, Timiri, TN</div>
+        </div>
+        <div class="edu-meta">2019 · 82%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-tag mono" style="justify-content:center; display:flex; color:var(--amber);">+91 8248148312 · CONTACT</div>
+    <h2>Let's build something together.</h2>
+    <p>Open to Java Developer roles — feel free to reach out.</p>
+    <div class="footer-links">
+      <a href="mailto:preethipriya2128@gmail.com" class="btn btn-primary">✉ Email Me</a>
+      <a href="https://www.linkedin.com/in/preethi2128" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/Preethi2128" target="_blank" class="btn btn-ghost">GitHub</a>
+      <a href="https://www.codechef.com/users/preethi2128" target="_blank" class="btn btn-ghost">CodeChef</a>
+    </div>
+    <div class="foot-bottom">Designed &amp; built by Preethi R · Chennai, India</div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+
+</body></html>
